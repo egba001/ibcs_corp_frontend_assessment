@@ -99,49 +99,55 @@ export default function Table() {
                 </button>
             </div>
 
-            <table className="w-full border-collapse mt-5 border border-gray-300 text-left text-sm shadow-sm rounded-md">
-                <thead>
-                    <tr className="h-[4rem]">
-                        <th className="px-2 py-3">Name</th>
-                        <th className="px-2 py-3">Username</th>
-                        <th className="px-2 py-3">Company</th>
-                        <th className="px-2 py-3">Email</th>
-                        <th className="px-2 py-3">Phone number</th>
-                        <th className="px-2 py-3">Website</th>
-                        <th scope="col" className="px-2 py-3">
-                            <span className="sr-only">Edit</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {paginatedUsers.length > 0 ? (
-                        paginatedUsers.map((data) => (
-                            <tr key={data.id}>
-                                <td className="px-2 py-3">{data.name}</td>
-                                <td className="px-2 py-3">{data.username}</td>
-                                <td className="px-6 py-3">
-                                    {data.company.name}
-                                </td>
-                                <td className="px-2 py-3">{data.email}</td>
-                                <td className="px-2 py-3">{data.phone}</td>
-                                <td className="px-2 py-3">{data.website}</td>
-                                <td className="px-6 py-3">
-                                    <UserMenuDropDown userInfo={data} />
+            <div className="w-full overflow-x-auto">
+                <table className="w-full border-collapse mt-5 border border-gray-300 text-left text-sm shadow-sm rounded-md">
+                    <thead>
+                        <tr className="h-[4rem]">
+                            <th className="px-2 py-3">Name</th>
+                            <th className="px-2 py-3">Username</th>
+                            <th className="px-2 py-3">Company</th>
+                            <th className="px-2 py-3">Email</th>
+                            <th className="px-2 py-3">Phone number</th>
+                            <th className="px-2 py-3">Website</th>
+                            <th scope="col" className="px-2 py-3">
+                                <span className="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {paginatedUsers.length > 0 ? (
+                            paginatedUsers.map((data) => (
+                                <tr key={data.id}>
+                                    <td className="px-2 py-3">{data.name}</td>
+                                    <td className="px-2 py-3">
+                                        {data.username}
+                                    </td>
+                                    <td className="px-6 py-3">
+                                        {data.company.name}
+                                    </td>
+                                    <td className="px-2 py-3">{data.email}</td>
+                                    <td className="px-2 py-3">{data.phone}</td>
+                                    <td className="px-2 py-3">
+                                        {data.website}
+                                    </td>
+                                    <td className="px-6 py-3">
+                                        <UserMenuDropDown userInfo={data} />
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td
+                                    colSpan={7}
+                                    className="text-center py-4 text-blue-500"
+                                >
+                                    No users found
                                 </td>
                             </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td
-                                colSpan={7}
-                                className="text-center py-4 text-blue-500"
-                            >
-                                No users found
-                            </td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
+                        )}
+                    </tbody>
+                </table>
+            </div>
 
             {/* Pagination */}
             {totalUsers > itemsPerPage && (
