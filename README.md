@@ -1,50 +1,105 @@
-# React + TypeScript + Vite
+# Mini Dashboard with API Integration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+This project is a React-based mini dashboard that fetches and displays data from an API. It includes sorting, filtering, pagination, and CRUD operations. The app is styled using Tailwind CSS and utilizes TypeScript for type safety.
 
-Currently, two official plugins are available:
+## Features
+### 1. Fetch & Display Data
+- Uses JSONPlaceholder API (`/users`).
+- Displays data in a responsive table or card format.
+- Implements loading and error states.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 2. Sorting & Filtering
+- Users can sort data by different columns (email, website).
+- Includes a search input for filtering results.
 
-## Expanding the ESLint configuration
+### 3. Pagination
+- Implements client-side pagination.
+- Uses Previous and Next buttons for navigation.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 4. CRUD Operations
+- Allows users to edit an item in a modal.
+- Implements a delete action with a confirmation prompt.
+- Includes a create form to add a new item.
 
-- Configure the top-level `parserOptions` property like this:
+### 5. State Management
+- Uses TanStack Query (React Query) for enhanced API handling.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 6. Optimizations
+- Implements debouncing for the search input to prevent excessive re-renders.
+
+### 7. UI & Styling
+- Styled using Tailwind CSS.
+- Provides a clean and user-friendly interface.
+
+## Screenshot
+![Dashboard Preview](./screenshot.png)
+
+## Installation & Setup
+### Prerequisites
+- Node.js (>=14.x)
+- npm or yarn
+
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/egba001/ibcs_corp_frontend_assessment.git
+   ```
+2. Navigate to the project folder:
+   ```sh
+   cd react-mini-dashboard
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+4. Start the development server:
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Usage
+- Sort data by clicking on column headers.
+- Use the search bar to filter results.
+- Navigate using pagination controls.
+- Edit, delete, or add new items via the provided UI.
+
+## Tech Stack
+- **React (TypeScript)**
+- **Tailwind CSS**
+- **React Query**
+- **JSONPlaceholder API**
+
+## Folder Structure
+```
+react-mini-dashboard/
+├── src/
+│   ├── components/       # Reusable components 
+│   ├── utils/            # Utility functions
+│       ├── api.ts        # API calls
+│       ├── hooks.ts      # Custom hooks
+│       ├── types.ts      # TypeScript interfaces
+│   ├── App.tsx           # Main App component
+│   ├── main.tsx          # Entry point
+│
+├── public/               # Static assets
+├── package.json          # Dependencies & scripts
+├── README.md             # Project documentation
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Future Improvements
+- Implement authentication.
+- Add dark mode support.
+- Improve UI with Material UI components.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## License
+This project is open-source and available under the MIT License.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+Happy coding! 🚀
