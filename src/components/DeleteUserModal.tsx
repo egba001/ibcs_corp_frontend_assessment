@@ -11,7 +11,7 @@ import { useDeleteUser } from "../utils/hooks";
 
 export default function DeleteUserModal({ closeModal, userId }: DeleteUserProps) {
 
-    const { mutate: deleteUser, isPending, data, error } = useDeleteUser();
+    const { mutate: deleteUser, isPending, data: deleteData, error: deleteError } = useDeleteUser();
 
 
     return (
@@ -33,13 +33,19 @@ export default function DeleteUserModal({ closeModal, userId }: DeleteUserProps)
                             </button>
                         </div>
                         <div>
-                            <p className="mb-6">Are you sure you want to delete this user?</p>
-                            {
-                                !isPending && data && <p className="text-green-500">User successfully deleted</p>
-                            }
-                            {
-                                !isPending && error && <p className="text-red-500">Error deleting user</p>
-                            }
+                            <p className="mb-6">
+                                Are you sure you want to delete this user?
+                            </p>
+                            {deleteData ? (
+                                <p className="text-green-500">
+                                    User successfully deleted
+                                </p>
+                            ) : null}
+                            {deleteError ? (
+                                <p className="text-red-500">
+                                    Error deleting user
+                                </p>
+                            ) : null}
 
                             <button
                                 onClick={() => deleteUser(userId)}
